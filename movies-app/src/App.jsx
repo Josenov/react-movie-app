@@ -1,14 +1,19 @@
+import {Route, Routes} from 'react-router-dom'
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
 
 
 function App() {
-  
+
 
   return (
     <>
-      <div className='text-3xl flex justify-center items-center text-white'>
-        <h1 >MovieMania</h1>
-      </div>
+      <Navbar />
+      <Routes>
       
+        <Route path="/" element={<Home />} />
+      </Routes>
+
     </>
   )
 }
