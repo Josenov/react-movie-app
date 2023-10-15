@@ -50,11 +50,14 @@ const Navbar = () => {
             {
                 user?
                 <div className='text-white flex items-center '>
-                <h1 className='text-white text-xl mr-2 my-4'>{!user.displayName?<p>New User</p>:user.displayName}</h1>
+                <Link to='/account'>
+                <h1 title='account' className='text-white text-xl mr-2 my-4'>{!user.displayName?<p>{user.email}</p>:user.displayName}</h1>
+                </Link>
+                
                 <img className='rounded-full  w-12 h-12' src={!user.photoURL?defaultUserPic:user.photoURL} alt="" />
                 <button onClick={signOutUser} className='bg-red-600 px-6 py-1 h-10 rounded cursor-pointer m-1 text-lg'>Sign Out</button>
             </div> :
-                navigate('/signin')
+                navigate('/signup')
                 
 
             }

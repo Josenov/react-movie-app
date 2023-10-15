@@ -25,7 +25,10 @@ const MyRoutes = () => {
                 </RequireAuth>} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account" element={
+            <RequireAuth>
+                <Account />
+            </RequireAuth>} />
 
         </Routes>
 

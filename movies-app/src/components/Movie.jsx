@@ -8,6 +8,27 @@ import {arrayUnion, doc, updateDoc} from 'firebase/firestore'
 const Movie = ({movie}) => {
 
     const [like, setLike] = useState(false)
+    const [saved, setSaved] = useState(false)
+    const {user} = UserAuth();
+
+    const movieID = doc(db, 'users', `${user?.email}`)
+
+    const saveMovies = async () =>{
+        if (user?.email){
+            setLike(!like)
+            setSaved(true)
+            await updateDoc(movieID,{
+                savedMovies: arrayUnion({
+                    id:movie.id,
+                    title:movie.title,
+                    img: movie.backdrop_path,
+                    info: movie.overview
+                })
+            })
+        } else {
+            alert('Sign In to like a movie')
+        }
+    }
 
     return (
         <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2'>
@@ -15,7 +36,7 @@ const Movie = ({movie}) => {
             src={`https://image.tmdb.org/t/p/w500/${movie?.backdrop_path}`} alt={movie?.title} />
             <div className='absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white'>
                 <p className='white-space-normal text-white text-center text-l md:text-sm font-bold flex justify-center items-center h-full'>{movie?.title}</p>
-                <p>
+                <p onClick={saveMovies}>
                     {like ? <FaHeart className='absolute top-4 left-4 text-center' /> : <FaRegHeart className='absolute top-4 left-4 text-gray-300' />}
                 </p>
             </div>
