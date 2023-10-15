@@ -26,8 +26,8 @@ const Main = () => {
                         <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5 ml-4'>Play</button>
                         <button className='border  text-white border-gray-300 py-2 px-5 ml-4'>Watch Later</button>
                     </div>
-                    <p className='text-gray-400 text-sm'>Released: {movie?.release_date}</p>
-                    <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] font-bold text-gray-400'>{movie?.overview}</p>
+                    <p className='text-gray-400 text-sm font-semibold'>Released: {movie?.release_date}</p>
+                    <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] font-semibold text-gray-200'>{movie?.overview}</p>
                 </div>
 
             </div>

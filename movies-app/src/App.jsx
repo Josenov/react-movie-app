@@ -1,18 +1,38 @@
-import {Route, Routes} from 'react-router-dom'
+
 import Navbar from "./components/Navbar"
-import Home from "./pages/Home"
+import { AuthContextProvider, UserAuth, } from './context/AuthContext'
+import MyRoutes from "./routers/MyRoutes"
+
+
+
+
+
+
+
+
 
 
 function App() {
 
+ 
+
 
   return (
     <>
-      <Navbar />
-      <Routes>
-      
-        <Route path="/" element={<Home />} />
-      </Routes>
+
+      <AuthContextProvider>
+        <Navbar />
+        <MyRoutes/>
+          
+
+
+      </AuthContextProvider>
+
+
+
+
+
+
 
     </>
   )
