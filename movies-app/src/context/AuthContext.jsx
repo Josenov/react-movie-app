@@ -22,7 +22,11 @@ export const AuthContextProvider = ({children}) =>{
             
         }
 
-        function manualSignUp (email,password){
+        function signIn(email, password){
+            return signInWithEmailAndPassword(auth, email, password);
+        }
+
+            function manualSignUp (email,password){
             createUserWithEmailAndPassword(auth,email,password);
 
             setDoc(doc(db, 'users', email),{
@@ -44,7 +48,7 @@ export const AuthContextProvider = ({children}) =>{
         }, [])
 
         return (
-            <AuthContext.Provider value={{googleSignIn, signOutSession, manualSignUp, user}}>
+            <AuthContext.Provider value={{googleSignIn, signOutSession, manualSignUp, signIn, user}}>
 
                 {children}
 

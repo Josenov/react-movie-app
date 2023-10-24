@@ -5,13 +5,14 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Account from '../pages/Account'
 import { UserAuth } from '../context/AuthContext'
+import Hero from '../components/Hero'
 
 
 const MyRoutes = () => {
 
     const { user } = UserAuth();
     const RequireAuth = ({ children }) => {
-        return user ? children : <Navigate to="/" />
+        return user ? children : <Navigate to="/hero" />
     }
     return (
 
@@ -23,6 +24,7 @@ const MyRoutes = () => {
                 <RequireAuth>
                     <Home />
                 </RequireAuth>} />
+            <Route path="/hero" element={<Hero />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/account" element={
